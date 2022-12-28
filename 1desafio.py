@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import re
 
 driver = webdriver.Chrome()
 
@@ -22,4 +23,9 @@ SearchInput = driver.find_element(By.NAME, "s")
 SearchInput.send_keys("Receitas de Panquecas")
 SearchInput.submit_button.click()
 
+matches = re.findall(r'panquecas')
+count = len(matches)
+print(f'A palavra "panquecas" aparece {count} vezes.')
+
 driver.close()
+
